@@ -1,8 +1,10 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 
+const connectDB = require('./config/db');
 const { DEFAULT_PORT, MAX_PORT } = require('./config/constants');
 const { requestLogger } = require('./middleware/logger');
 const { errorHandler } = require('./middleware/errorHandler');
@@ -17,6 +19,9 @@ const statsRoutes = require('./routes/statsRoutes');
 const authRoutes = require('./routes/authRoutes');
 
 const app = express();
+
+// Connect MongoDB Database
+connectDB();
 
 // Global Middleware
 app.use(cors());
@@ -35,7 +40,8 @@ app.use('/api/auth', authRoutes);
 // Root API Welcome Check
 app.get('/api', (req, res) => {
   res.json({
-    message: 'Welcome to DEBISA DARICHA DABA Portfolio REST API',
+    message: 'Welcome to DEBISA DARICHA DABA Portfolio REST API (MongoDB Powered)',
+    mongoDbUrl: process.env.MONGO_URL || 'mongodb://localhost:27017/portfolio',
     endpoints: [
       '/api/stats',
       '/api/profile',
@@ -54,7 +60,7 @@ app.use(errorHandler);
 // Dynamic Port Startup Logic
 function startServer(portToTry) {
   const server = app.listen(portToTry, () => {
-    console.log(`⚡ [Portfolio REST API] Server active on http://localhost:${portToTry}`);
+    console.log(`⚡ [Portfolio MongoDB REST API] Server active on http://localhost:${portToTry}`);
     try {
       fs.writeFileSync(path.join(__dirname, 'data', 'server-port.json'), JSON.stringify({ port: portToTry }), 'utf8');
     } catch (e) {}
@@ -68,4 +74,4 @@ function startServer(portToTry) {
   });
 }
 
-startServer(DEFAULT_PORT);
+startServer(process.env.PORT || DEFAULT_PORT);

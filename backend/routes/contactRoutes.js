@@ -1,12 +1,33 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
+const Message = require('../models/Message');
 const { readDb, saveDb } = require('../utils/dbHelper');
 
 // POST contact form message
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   const { name, email, subject, message } = req.body;
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'Name, email, and message are required fields.' });
+  }
+
+  try {
+    if (mongoose.connection.readyState === 1) {
+      const newMsg = await Message.create({
+        name,
+        email,
+        subject: subject || 'General Inquiry',
+        message
+      });
+      console.log(`🍃 [MongoDB Contact API] Saved message from ${name} (${email})`);
+      return res.status(201).json({
+        success: true,
+        message: 'Thank you! Your message has been transmitted directly to DEBISA DARICHA DABA.',
+        data: newMsg
+      });
+    }
+  } catch (e) {
+    console.error('[MongoDB Route Error] Message create error:', e);
   }
 
   const db = readDb();
@@ -32,7 +53,16 @@ router.post('/', (req, res) => {
 });
 
 // GET contact messages (Admin View)
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+  try {
+    if (mongoose.connection.readyState === 1) {
+      const messages = await Message.find().sort({ createdAt: -1 });
+      return res.json(messages);
+    }
+  } catch (e) {
+    console.error('[MongoDB Route Error] Message fetch error:', e);
+  }
+
   const db = readDb();
   res.json(db.messages || []);
 });

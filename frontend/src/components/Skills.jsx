@@ -31,7 +31,7 @@ export const Skills = () => {
   return (
     <section id="skills" className="py-20 relative z-10">
       <div className="max-w-7xl mx-auto px-6">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs font-mono text-cyan-400">
@@ -42,7 +42,7 @@ export const Skills = () => {
             Skills & <span className="text-gradient">Core Tech Stack</span>
           </h2>
           <p className="text-slate-300 text-base">
-            Comprehensive skill set built over 6+ years of engineering robust software systems and modern web products.
+            Comprehensive skill set built over 2+ years of engineering robust software systems and modern web products.
           </p>
         </div>
 
@@ -52,11 +52,10 @@ export const Skills = () => {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-5 py-2 rounded-xl text-xs font-semibold tracking-wide transition-all ${
-                selectedCategory === cat
+              className={`px-5 py-2 rounded-xl text-xs font-semibold tracking-wide transition-all ${selectedCategory === cat
                   ? 'bg-gradient-to-r from-cyan-500 to-indigo-600 text-white shadow-lg shadow-cyan-500/25 scale-105'
                   : 'glass-panel text-slate-300 hover:text-white hover:border-slate-700'
-              }`}
+                }`}
             >
               {cat}
             </button>
