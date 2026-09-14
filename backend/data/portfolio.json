@@ -26,10 +26,10 @@
       "id": "proj-1",
       "title": "Job Portal System",
       "category": "Fullstack Web App",
-      "description": "Comprehensive recruitment web portal connecting job seekers and employers with automated application tracking, resume management, and candidate filtering.",
-      "longDescription": "The Job Portal System streamlines hiring for employers and job candidates. Features multi-role access (Candidate, Recruiter, Admin), real-time applicant tracking, search filters by experience and skills, and dynamic resume parsing.",
+      "description": "Comprehensive recruitment & career marketplace platform connecting job seekers and top enterprise employers with instant job matching, posting workflows, and application tracking.",
+      "longDescription": "The Job Portal System is a modern, end-to-end employment platform engineered to streamline hiring for companies and career growth for job seekers. Features dual portal interfaces for Employers ('Post a Job') and Candidates ('Find Jobs'), multi-role authentication (Applicant, Recruiter, Admin), real-time job searching with category & skill filters, candidate resume management, live application status tracking, and scalable REST APIs supporting high-volume discovery across 100K+ enterprise companies and 180K+ active listings.",
       "tags": ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "REST API"],
-      "image": "/images/project_job_portal.jpg",
+      "image": "/images/project_job_portal.png",
       "github": "https://github.com/DebisanD",
       "demo": "https://github.com/DebisanD",
       "featured": true
@@ -53,7 +53,7 @@
       "description": "Digital agricultural commodity marketplace and live market price intelligence platform empowering farmers across Ethiopia.",
       "longDescription": "AgriLink Ethiopia bridges the gap between Ethiopian agricultural producers and regional crop buyers. Features real-time commodity price tracking (Teff, Maize, Coffee, Sesame), direct buyer-seller trading channels, and logistics tracking.",
       "tags": ["React", "Node.js", "Express", "PostgreSQL", "Tailwind CSS", "REST API"],
-      "image": "/images/project_agrilink_ethiopia.jpg",
+      "image": "/images/project_agrilink_ethiopia.png",
       "github": "https://github.com/DebisanD",
       "demo": "https://github.com/DebisanD",
       "featured": true
