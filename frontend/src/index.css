@@ -14,6 +14,18 @@
   --accent-color: #06b6d4;
 }
 
+[data-theme="light"] {
+  --bg-main: #ffffff;
+  --text-main: #0f172a;
+  --accent-color: #2563eb;
+}
+
+[data-theme="mono-black"] {
+  --bg-main: #000000;
+  --text-main: #ffffff;
+  --accent-color: #38bdf8;
+}
+
 [data-theme="golden"] {
   --bg-main: #0c0a04;
   --text-main: #fef3c7;
@@ -31,6 +43,45 @@
   --text-main: #faf5ff;
   --accent-color: #a855f7;
 }
+
+/* Light Mode Overrides for Crisp Readability */
+[data-theme="light"] body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .glass-panel {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(203, 213, 225, 0.8) !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08) !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .text-white {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .text-slate-300,
+[data-theme="light"] .text-slate-200 {
+  color: #334155 !important;
+}
+
+[data-theme="light"] .text-slate-400 {
+  color: #475569 !important;
+}
+
+[data-theme="light"] .bg-slate-900,
+[data-theme="light"] .bg-slate-950,
+[data-theme="light"] .bg-\[\#090d16\]\/90 {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .border-slate-800,
+[data-theme="light"] .border-slate-900 {
+  border-color: #cbd5e1 !important;
+}
+
 
 @layer base {
   body {

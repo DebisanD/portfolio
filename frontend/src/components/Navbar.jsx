@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { usePortfolio } from '../context/PortfolioContext';
-import { Shield, Menu, X } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
+import { Shield, Menu, X, Sun, Moon } from 'lucide-react';
 
 export const Navbar = ({ onOpenAdmin }) => {
   const { isBackendConnected, adminToken, logoutAdmin, profile } = usePortfolio();
+  const { theme, toggleLightDark } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -62,9 +64,22 @@ export const Navbar = ({ onOpenAdmin }) => {
           ))}
         </nav>
 
-        {/* Right side controls: Backend Status Dot & Admin Auth */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* Right side controls: Light/Dark Toggle, Backend Status Dot & Admin Auth */}
+        <div className="hidden md:flex items-center gap-3">
           
+          {/* Quick Sun / Moon Light-Dark Mode Toggle */}
+          <button
+            onClick={toggleLightDark}
+            className="p-2 rounded-full bg-slate-900/90 border border-slate-800 text-amber-400 hover:text-amber-300 hover:bg-slate-800 transition-all flex items-center justify-center shadow-lg"
+            title={theme === 'light' ? "Switch to Dark (Black) Mode" : "Switch to Light (White) Mode"}
+          >
+            {theme === 'light' ? (
+              <Moon className="w-4 h-4 text-cyan-400" />
+            ) : (
+              <Sun className="w-4 h-4 text-amber-400 animate-spin" style={{ animationDuration: '12s' }} />
+            )}
+          </button>
+
           {/* API Backend Status Badge */}
           <div
             title={isBackendConnected ? "Express REST API is live" : "Connecting to Express REST API"}
@@ -107,12 +122,20 @@ export const Navbar = ({ onOpenAdmin }) => {
         </div>
 
         {/* Mobile menu trigger button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-slate-300 hover:text-white"
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+          <button
+            onClick={toggleLightDark}
+            className="p-2 rounded-full bg-slate-900 border border-slate-800 text-amber-400"
+          >
+            {theme === 'light' ? <Moon className="w-4 h-4 text-cyan-400" /> : <Sun className="w-4 h-4 text-amber-400" />}
+          </button>
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 text-slate-300 hover:text-white"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Drawer */}
