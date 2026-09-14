@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { usePortfolio } from '../context/PortfolioContext';
-import { ArrowRight, Download, Github, Facebook, Send, Sparkles, BookOpen, CheckCircle2, UserCheck, X } from 'lucide-react';
+import { ArrowRight, Download, Github, Facebook, Send, Sparkles, BookOpen, CheckCircle2, UserCheck, X, Instagram, Briefcase } from 'lucide-react';
 
 export const Hero = () => {
   const { profile } = usePortfolio();
@@ -181,7 +181,7 @@ Software Engineering • Full-Stack Development • Web Applications • Backend
             <div className="pt-4 flex flex-wrap items-center gap-3 text-slate-300 text-xs font-mono">
               <a href={p.social?.github || "https://github.com/DebisanD"} target="_blank" rel="noreferrer" className="hover:text-cyan-400 transition-colors px-3 py-2 glass-panel rounded-xl flex items-center gap-2">
                 <Github className="w-4 h-4 text-cyan-400" />
-                <span>DebisanD</span>
+                <span>GitHub: DebisanD</span>
               </a>
 
               <a href={p.social?.facebook || "https://www.facebook.com/debisa.daricha.1"} target="_blank" rel="noreferrer" className="hover:text-blue-400 transition-colors px-3 py-2 glass-panel rounded-xl flex items-center gap-2 border-blue-500/30">
@@ -197,6 +197,16 @@ Software Engineering • Full-Stack Development • Web Applications • Backend
               <a href="https://t.me/Deebiisan" target="_blank" rel="noreferrer" className="hover:text-cyan-400 transition-colors px-3 py-2 glass-panel rounded-xl flex items-center gap-2">
                 <Send className="w-4 h-4 text-indigo-400" />
                 <span>@Deebiisan</span>
+              </a>
+
+              <a href={p.social?.instagram || "https://www.instagram.com/debisa.daricha"} target="_blank" rel="noreferrer" className="hover:text-rose-400 transition-colors px-3 py-2 glass-panel rounded-xl flex items-center gap-2 border-rose-500/30">
+                <Instagram className="w-4 h-4 text-rose-400" />
+                <span>Instagram</span>
+              </a>
+
+              <a href={p.social?.freelance || "https://github.com/DebisanD"} target="_blank" rel="noreferrer" className="hover:text-amber-400 transition-colors px-3 py-2 glass-panel rounded-xl flex items-center gap-2 border-amber-500/30">
+                <Briefcase className="w-4 h-4 text-amber-400" />
+                <span>Freelance / Projects</span>
               </a>
             </div>
 

@@ -28,7 +28,7 @@ export const Footer = () => {
           </a>
           <span>•</span>
           <a href={profile?.social?.facebook || "https://www.facebook.com/debisa.daricha.1"} target="_blank" rel="noreferrer" className="hover:text-blue-400 transition-colors">
-            Facebook Profile
+            Facebook
           </a>
           <span>•</span>
           <a href="https://t.me/MaalanJira" target="_blank" rel="noreferrer" className="hover:text-cyan-400 transition-colors">
@@ -37,6 +37,14 @@ export const Footer = () => {
           <span>•</span>
           <a href="https://t.me/Deebiisan" target="_blank" rel="noreferrer" className="hover:text-cyan-400 transition-colors">
             Telegram (@Deebiisan)
+          </a>
+          <span>•</span>
+          <a href={profile?.social?.instagram || "https://www.instagram.com/debisa.daricha"} target="_blank" rel="noreferrer" className="hover:text-rose-400 transition-colors">
+            Instagram
+          </a>
+          <span>•</span>
+          <a href={profile?.social?.freelance || "https://github.com/DebisanD"} target="_blank" rel="noreferrer" className="hover:text-amber-400 transition-colors">
+            Freelance & Projects
           </a>
           <span>•</span>
           <a href={`mailto:${profile?.social?.email || "debisadaricha3@gmail.com"}`} className="hover:text-cyan-400 transition-colors">
