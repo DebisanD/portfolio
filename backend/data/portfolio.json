@@ -1,14 +1,48 @@
 {
   "profile": {
     "name": "DEBISA DARICHA DABA",
-    "title": "Senior Full Stack Software Engineer & Odoo ERP Specialist",
-    "status": "Available for software engineering & consulting",
+    "title": "Software Engineer & Full-Stack Developer",
+    "status": "Available for Software Engineering & Full-Stack Development",
     "location": "Ethiopia (Remote Ready)",
     "avatar": "/images/debisa_avatar.jpg",
-    "tagline": "Building scalable web applications, custom Odoo ERP systems, AgriTech platforms, and enterprise solutions since 2025.",
-    "about": "Passionate Senior Full Stack Software Engineer based in Ethiopia with expertise in full-stack web development, custom Odoo ERP engineering, REST APIs, and digital agriculture platforms. Graduate of Dambi Dollo University, delivering modern software systems since 2025.",
+    "tagline": "Building web applications with React.js, Node.js, Express.js & MongoDB. Passionate about system building, problem solving, and turning ideas into practical digital solutions.",
+    "shortBio": "I’m Debisa Daricha Daba, an Ethiopian Software Engineer and Full-Stack Developer passionate about building practical and user-focused web applications. I work primarily with the MERN stack — MongoDB, Express.js, React.js, and Node.js — and have experience developing authentication systems, REST APIs, role-based access control, database-driven applications, job management platforms, and online examination features.",
+    "githubBio": "Software Engineer & Full-Stack Developer 🚀 Building web applications with React.js, Node.js, Express.js & MongoDB. Passionate about system building, problem solving, and turning ideas into practical digital solutions.",
+    "cvSummary": "SOFTWARE ENGINEER | FULL-STACK DEVELOPER\n\nSoftware Engineering graduate and aspiring Full-Stack Developer with hands-on experience building web-based applications using JavaScript, React.js, Node.js, Express.js, and MongoDB. Experienced in developing REST APIs, authentication and authorization systems, role-based access control, database-driven applications, job management platforms, and online examination features. Strong interest in software engineering, system design, problem solving, and developing practical digital solutions for real-world challenges.",
+    "about": "Debisa Daricha Daba is an Ethiopian Software Engineer and Full-Stack Developer passionate about building practical, scalable, and user-focused digital solutions combining software engineering principles with JavaScript, React.js, Node.js, Express.js, and MongoDB.",
+    "careerGoal": "To grow as a professional Full-Stack Software Engineer and build reliable digital solutions that create meaningful impact.",
+    "fullBiography": {
+      "title": "Who Is Debisa Daricha Daba?",
+      "paragraphs": [
+        "Debisa Daricha Daba is an Ethiopian Software Engineer and Full-Stack Developer passionate about building practical, scalable, and user-focused digital solutions. His work focuses primarily on modern web application development, combining strong software engineering principles with technologies such as JavaScript, React.js, Node.js, Express.js, and MongoDB.",
+        "Debisa developed his foundation in Software Engineering through his academic studies at Dambi Dollo University, where he gained experience in software development, system analysis and design, databases, web technologies, and software engineering methodologies.",
+        "One of his major projects is a Web-Based Job Portal System, designed to connect job seekers, employers, and administrators through a centralized recruitment platform. The system includes authentication, role-based access control, job posting and management, job applications, CV handling, online examinations, and application management. Through this project, Debisa gained practical experience in developing full-stack applications and integrating frontend, backend, database, and authentication technologies.",
+        "Beyond academic projects, Debisa is interested in developing solutions that address real-world problems in areas such as employment, agriculture, business management, and digital services. He continuously works to improve his programming, system-building, problem-solving, communication, and professional skills.",
+        "As a growing software professional, Debisa's goal is to become an accomplished Full-Stack Software Engineer and System Builder, contributing to innovative technology projects while creating reliable and meaningful digital products that can positively impact individuals, organizations, and communities."
+      ]
+    },
+    "coreTechnologies": [
+      "JavaScript",
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "REST APIs",
+      "Git",
+      "GitHub",
+      "Tailwind CSS"
+    ],
+    "professionalFocus": [
+      "Software Engineering",
+      "Full-Stack Development",
+      "Web Applications",
+      "Backend Development",
+      "REST API Development",
+      "Database Systems",
+      "System Design"
+    ],
     "stats": {
-      "yearsExperience": "Since 2025",
+      "yearsExperience": "Class of 2025",
       "completedProjects": 18,
       "codeCommits": "2.1k+",
       "clientSatisfaction": "100%"
@@ -25,11 +59,11 @@
   "projects": [
     {
       "id": "proj-1",
-      "title": "Job Portal System",
+      "title": "Web-Based Job Portal System",
       "category": "Fullstack Web App",
-      "description": "Comprehensive recruitment & career marketplace platform connecting job seekers and top enterprise employers with instant job matching, posting workflows, and application tracking.",
-      "longDescription": "The Job Portal System is a modern, end-to-end employment platform engineered to streamline hiring for companies and career growth for job seekers. Features dual portal interfaces for Employers ('Post a Job') and Candidates ('Find Jobs'), multi-role authentication (Applicant, Recruiter, Admin), real-time job searching with category & skill filters, candidate resume management, live application status tracking, and scalable REST APIs supporting high-volume discovery across 100K+ enterprise companies and 180K+ active listings.",
-      "tags": ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "REST API"],
+      "description": "Comprehensive recruitment platform connecting job seekers, employers, and administrators with online examinations, CV handling, and role-based access control.",
+      "longDescription": "The Web-Based Job Portal System is Debisa's major academic project at Dambi Dollo University, engineered to connect job seekers and employers through a centralized recruitment platform. Features dual portals for Candidates & Employers, multi-role authentication (Applicant, Recruiter, Admin), role-based access control, job posting & application management, CV handling, online examinations, and live application status tracking built on the MERN stack.",
+      "tags": ["JavaScript", "React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "REST API"],
       "image": "/images/project_job_portal.png",
       "github": "https://github.com/DebisanD",
       "demo": "https://github.com/DebisanD",
@@ -53,7 +87,7 @@
       "category": "AgriTech & Web",
       "description": "Digital agricultural commodity marketplace and live market price intelligence platform empowering farmers across Ethiopia.",
       "longDescription": "AgriLink Ethiopia bridges the gap between Ethiopian agricultural producers and regional crop buyers. Features real-time commodity price tracking (Teff, Maize, Coffee, Sesame), direct buyer-seller trading channels, and logistics tracking.",
-      "tags": ["React", "Node.js", "Express", "PostgreSQL", "Tailwind CSS", "REST API"],
+      "tags": ["React.js", "Node.js", "Express.js", "PostgreSQL", "Tailwind CSS", "REST API"],
       "image": "/images/project_agrilink_ethiopia.png",
       "github": "https://github.com/DebisanD",
       "demo": "https://github.com/DebisanD",
@@ -61,24 +95,25 @@
     }
   ],
   "skills": [
-    { "id": "sk-1", "name": "Python & Odoo ERP", "category": "Backend & ERP", "level": 94, "icon": "Terminal" },
-    { "id": "sk-2", "name": "Node.js & Express REST API", "category": "Backend", "level": 92, "icon": "Server" },
-    { "id": "sk-3", "name": "React & Modern JavaScript", "category": "Frontend", "level": 92, "icon": "Code2" },
+    { "id": "sk-1", "name": "JavaScript & React.js", "category": "Frontend", "level": 95, "icon": "Code2" },
+    { "id": "sk-2", "name": "Node.js & Express.js REST API", "category": "Backend", "level": 94, "icon": "Server" },
+    { "id": "sk-3", "name": "MongoDB & Database Systems", "category": "Database", "level": 92, "icon": "Database" },
     { "id": "sk-4", "name": "Tailwind CSS & Responsive UI", "category": "Frontend", "level": 90, "icon": "Palette" },
-    { "id": "sk-5", "name": "PostgreSQL & MongoDB", "category": "Database", "level": 88, "icon": "Database" },
-    { "id": "sk-6", "name": "Git & Systems Architecture", "category": "Architecture", "level": 90, "icon": "Workflow" }
+    { "id": "sk-5", "name": "Python & Odoo ERP Systems", "category": "Backend & ERP", "level": 92, "icon": "Terminal" },
+    { "id": "sk-6", "name": "Git, GitHub & System Architecture", "category": "Architecture", "level": 90, "icon": "Workflow" }
   ],
   "experiences": [
     {
       "id": "exp-1",
-      "title": "Senior Full Stack Software Engineer",
-      "company": "Enterprise & AgriTech Software Systems",
+      "title": "Software Engineer & Full-Stack Developer",
+      "company": "Dambi Dollo University Alumnus & Web Projects",
       "period": "2025 - Present",
-      "type": "Full-time / Lead",
-      "description": "Engineering full-stack web portals, AgriLink Ethiopia, Job Portal System, and custom Odoo ERP module integrations. Graduate of Dambi Dollo University.",
+      "type": "Full-time / Projects",
+      "description": "Developing full-stack web applications, Web-Based Job Portal System, AgriLink Ethiopia, and custom Odoo ERP modules. Graduate of Dambi Dollo University.",
       "highlights": [
-        "Architected AgriLink Ethiopia digital agriculture marketplace and Job Portal System",
-        "Designed custom Odoo ERP workflows and REST APIs for business process automation"
+        "Architected Web-Based Job Portal System with online examinations & CV management",
+        "Developed AgriLink Ethiopia digital agriculture marketplace",
+        "Built REST APIs, multi-role authentication, and role-based access control"
       ]
     }
   ],
@@ -87,8 +122,8 @@
       "id": "msg-101",
       "name": "Abebe Tadesse",
       "email": "abebe.t@tech.et",
-      "subject": "Full Stack Engineering Consultation",
-      "message": "Hi Debisa, I reviewed AgriLink Ethiopia and your Odoo ERP work. Excellent engineering! We would love to discuss a collaboration.",
+      "subject": "Full Stack Software Engineering Consultation",
+      "message": "Hi Debisa, I read your biography and reviewed your Job Portal System and AgriLink Ethiopia work. Excellent engineering! We would love to discuss a collaboration.",
       "date": "2026-09-14T10:00:00.000Z",
       "read": false
     }
