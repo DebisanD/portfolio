@@ -70,11 +70,12 @@ export const Education = () => {
               <div>
                 <span className="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">BACHELOR DEGREE</span>
                 <h3 className="text-2xl font-extrabold text-white mt-1">Dambi Dollo University</h3>
-                <p className="text-sm font-semibold text-slate-300 mt-1">Bachelor of Science in Computer Science / Software Engineering</p>
+                <p className="text-sm font-bold text-amber-300 mt-1">Department of Software Engineering</p>
+                <p className="text-xs font-semibold text-slate-300 mt-0.5">B.Sc. in Software Engineering (Class of 2025)</p>
               </div>
 
               <p className="text-sm text-slate-300 leading-relaxed font-normal">
-                Graduated with focus on full-stack software development, object-oriented software engineering, database systems design, and enterprise application architecture.
+                Academic foundation developed in the Department of Software Engineering at Dambi Dollo University, covering software development, system analysis & design, databases, web technologies, and software engineering methodologies.
               </p>
 
               {/* Coursework Highlights */}
