@@ -6,7 +6,7 @@ export const Experience = () => {
   const { experiences } = usePortfolio();
 
   return (
-    <section id="experience" className="py-20 relative z-10">
+    <section id="experience" className="py-24 relative z-10 section-glow-top bg-slate-950/30 border-b border-slate-800/60 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Section Header */}
@@ -26,7 +26,7 @@ export const Experience = () => {
         {/* Timeline */}
         <div className="mt-16 max-w-4xl mx-auto relative border-l-2 border-slate-800/80 pl-6 md:pl-10 space-y-12">
           {experiences.map((exp, idx) => (
-            <div key={exp.id} className="relative group">
+            <div key={exp.id || exp._id || `exp-${idx}`} className="relative group">
               
               {/* Timeline Node */}
               <div className="absolute -left-[31px] md:-left-[47px] top-1.5 w-6 h-6 rounded-full bg-slate-950 border-2 border-cyan-400 flex items-center justify-center group-hover:scale-125 group-hover:shadow-[0_0_15px_#38bdf8] transition-all duration-300">

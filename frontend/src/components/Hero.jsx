@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { usePortfolio } from '../context/PortfolioContext';
-import { ArrowRight, Download, Terminal, Github, Linkedin, Twitter, Mail, Sparkles, Send, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Download, Github, Facebook, Send, Sparkles } from 'lucide-react';
 
 export const Hero = () => {
   const { profile } = usePortfolio();
@@ -20,6 +20,7 @@ export const Hero = () => {
     },
     social: {
       github: "https://github.com/DebisanD",
+      facebook: "https://www.facebook.com/debisa.daricha.1",
       telegram: "https://t.me/MaalanJira",
       telegram2: "https://t.me/Deebiisan",
       phone: "+251910905895 / +251918342587",
@@ -36,6 +37,7 @@ Email: debisadaricha3@gmail.com
 Phone: +251910905895 / +251918342587
 Location: Ethiopia (Remote Ready)
 GitHub: https://github.com/DebisanD
+Facebook: https://www.facebook.com/debisa.daricha.1
 Telegram: @MaalanJira / @Deebiisan
 
 SUMMARY:
@@ -65,6 +67,9 @@ CORE SKILLS:
 
   return (
     <section id="about" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden z-10">
+      {/* Background ambient lighting accents */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-cyan-500/20 via-indigo-500/15 to-purple-500/10 blur-[120px] rounded-full pointer-events-none -z-10" />
+
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
@@ -121,10 +126,15 @@ CORE SKILLS:
             </div>
 
             {/* Social Icons & Contact Handles */}
-            <div className="pt-4 flex flex-wrap items-center gap-4 text-slate-300 text-xs font-mono">
+            <div className="pt-4 flex flex-wrap items-center gap-3 text-slate-300 text-xs font-mono">
               <a href={p.social?.github || "https://github.com/DebisanD"} target="_blank" rel="noreferrer" className="hover:text-cyan-400 transition-colors px-3 py-2 glass-panel rounded-xl flex items-center gap-2">
                 <Github className="w-4 h-4 text-cyan-400" />
                 <span>DebisanD</span>
+              </a>
+
+              <a href={p.social?.facebook || "https://www.facebook.com/debisa.daricha.1"} target="_blank" rel="noreferrer" className="hover:text-blue-400 transition-colors px-3 py-2 glass-panel rounded-xl flex items-center gap-2 border-blue-500/30">
+                <Facebook className="w-4 h-4 text-blue-400" />
+                <span>Facebook</span>
               </a>
 
               <a href="https://t.me/MaalanJira" target="_blank" rel="noreferrer" className="hover:text-cyan-400 transition-colors px-3 py-2 glass-panel rounded-xl flex items-center gap-2">
@@ -177,6 +187,7 @@ CORE SKILLS:
                     <p className="pl-4"><span className="text-slate-400">name:</span> <span className="text-emerald-300">"DEBISA DARICHA DABA"</span>,</p>
                     <p className="pl-4"><span className="text-slate-400">role:</span> <span className="text-emerald-300">"{p.title}"</span>,</p>
                     <p className="pl-4"><span className="text-slate-400">location:</span> <span className="text-emerald-300">"Ethiopia"</span>,</p>
+                    <p className="pl-4"><span className="text-slate-400">facebook:</span> <span className="text-blue-300">"debisa.daricha.1"</span>,</p>
                     <p className="pl-4"><span className="text-slate-400">experienceStart:</span> <span className="text-amber-300">"2025"</span>,</p>
                     <p className="pl-4"><span className="text-slate-400">featuredProjects:</span> [</p>
                     <p className="pl-8 text-amber-300">"Job Portal System",</p>
@@ -207,7 +218,7 @@ CORE SKILLS:
                     <p className="text-purple-400">&#123;</p>
                     <p className="pl-4"><span className="text-cyan-300">"frontend":</span> "React 18 + Vite + Tailwind CSS",</p>
                     <p className="pl-4"><span className="text-cyan-300">"backend":</span> "Node.js + Express REST API",</p>
-                    <p className="pl-4"><span className="text-cyan-300">"database":</span> "SQLite / JSON Store",</p>
+                    <p className="pl-4"><span className="text-cyan-300">"database":</span> "MongoDB / JSON Store",</p>
                     <p className="pl-4"><span className="text-cyan-300">"deployment":</span> "Docker / Vercel Ready"</p>
                     <p>&#125;</p>
                   </div>

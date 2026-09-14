@@ -1,6 +1,6 @@
 import React from 'react';
 import { usePortfolio } from '../context/PortfolioContext';
-import { Code2, Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react';
+import { Code2, Heart } from 'lucide-react';
 
 export const Footer = () => {
   const { profile } = usePortfolio();
@@ -25,6 +25,10 @@ export const Footer = () => {
         <div className="flex flex-wrap items-center gap-4 text-xs font-mono">
           <a href={profile?.social?.github || "https://github.com/DebisanD"} target="_blank" rel="noreferrer" className="hover:text-cyan-400 transition-colors">
             GitHub (DebisanD)
+          </a>
+          <span>•</span>
+          <a href={profile?.social?.facebook || "https://www.facebook.com/debisa.daricha.1"} target="_blank" rel="noreferrer" className="hover:text-blue-400 transition-colors">
+            Facebook Profile
           </a>
           <span>•</span>
           <a href="https://t.me/MaalanJira" target="_blank" rel="noreferrer" className="hover:text-cyan-400 transition-colors">

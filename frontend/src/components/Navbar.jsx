@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { usePortfolio } from '../context/PortfolioContext';
-import { Code2, Server, Terminal, Shield, Menu, X, CheckCircle, AlertCircle } from 'lucide-react';
+import { Shield, Menu, X } from 'lucide-react';
 
 export const Navbar = ({ onOpenAdmin }) => {
   const { isBackendConnected, adminToken, logoutAdmin, profile } = usePortfolio();
@@ -19,17 +19,20 @@ export const Navbar = ({ onOpenAdmin }) => {
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
+    { name: 'API Tester', href: '#api-explorer' },
+    { name: 'Education', href: '#education' },
     { name: 'Experience', href: '#experience' },
+    { name: 'Code', href: '#code-snippets' },
     { name: 'Contact', href: '#contact' },
   ];
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-      scrolled ? 'py-3 bg-[#090d16]/85 backdrop-blur-md border-b border-slate-800/80 shadow-2xl' : 'py-5 bg-transparent'
+      scrolled ? 'py-3 bg-[#030712]/85 backdrop-blur-md border-b border-slate-800/80 shadow-2xl' : 'py-5 bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         
-        {/* Brand Logo with User Graduation Photo */}
+        {/* Brand Logo with User Avatar */}
         <a href="#about" className="flex items-center gap-3 group">
           <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-cyan-500 via-indigo-500 to-amber-500 p-[2px] shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform duration-300 overflow-hidden shrink-0">
             <img

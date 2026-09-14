@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://debisa-daricha-portfolio.vercel.app/sitemap.xml

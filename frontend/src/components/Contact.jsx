@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { usePortfolio } from '../context/PortfolioContext';
-import { Mail, Send, MapPin, CheckCircle, Clock, MessageSquare, AlertCircle, Loader2 } from 'lucide-react';
+import { Mail, Send, MapPin, CheckCircle, MessageSquare, AlertCircle, Loader2, Facebook } from 'lucide-react';
 
 export const Contact = () => {
   const { sendContactMessage, profile } = usePortfolio();
@@ -30,7 +30,7 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 relative z-10 bg-slate-950/60 border-t border-slate-900">
+    <section id="contact" className="py-24 relative z-10 section-glow-top bg-[#070a14]/80 backdrop-blur-md border-t border-slate-800/80">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header */}
@@ -66,6 +66,18 @@ export const Contact = () => {
                     <div className="text-xs text-slate-400 font-mono">DIRECT EMAIL</div>
                     <a href={`mailto:${profile?.social?.email || "debisadaricha3@gmail.com"}`} className="text-white hover:text-cyan-400 font-medium">
                       {profile?.social?.email || "debisadaricha3@gmail.com"}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center shrink-0">
+                    <Facebook className="w-5 h-5 text-blue-400" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-slate-400 font-mono">FACEBOOK PROFILE</div>
+                    <a href={profile?.social?.facebook || "https://www.facebook.com/debisa.daricha.1"} target="_blank" rel="noreferrer" className="text-white hover:text-blue-400 font-medium">
+                      facebook.com/debisa.daricha.1
                     </a>
                   </div>
                 </div>

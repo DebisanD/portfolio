@@ -29,7 +29,7 @@ export const Skills = () => {
     : skills.filter(s => s.category.toLowerCase().includes(selectedCategory.toLowerCase()) || selectedCategory.toLowerCase().includes(s.category.toLowerCase()));
 
   return (
-    <section id="skills" className="py-20 relative z-10">
+    <section id="skills" className="py-24 relative z-10 section-glow-top bg-slate-950/40 border-y border-slate-800/60 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Section Header */}
@@ -64,9 +64,9 @@ export const Skills = () => {
 
         {/* Skills Grid */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {filteredSkills.map((skill) => (
+          {filteredSkills.map((skill, idx) => (
             <div
-              key={skill.id}
+              key={skill.id || skill._id || `sk-${idx}`}
               className="glass-panel p-5 rounded-2xl border border-slate-800/80 glass-panel-hover flex items-center gap-4"
             >
               <div className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center shrink-0">

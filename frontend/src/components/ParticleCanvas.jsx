@@ -18,17 +18,17 @@ export const ParticleCanvas = () => {
     };
     window.addEventListener('resize', handleResize);
 
-    const particles = Array.from({ length: 45 }).map(() => ({
+    const particles = Array.from({ length: 55 }).map(() => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      radius: Math.random() * 2 + 1,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      alpha: Math.random() * 0.5 + 0.2,
-      color: ['#38bdf8', '#818cf8', '#c084fc', '#34d399'][Math.floor(Math.random() * 4)]
+      radius: Math.random() * 2.2 + 1.2,
+      vx: (Math.random() - 0.5) * 0.45,
+      vy: (Math.random() - 0.5) * 0.45,
+      alpha: Math.random() * 0.6 + 0.3,
+      color: ['#38bdf8', '#818cf8', '#c084fc', '#34d399', '#fbbf24'][Math.floor(Math.random() * 5)]
     }));
 
-    let mouse = { x: -1000, y: -1000 };
+    let mouse = { x: width / 2, y: height / 3 };
     const handleMouseMove = (e) => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
@@ -38,10 +38,10 @@ export const ParticleCanvas = () => {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Draw subtle grid lines
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.02)';
+      // Subtle dynamic Grid Lines
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.025)';
       ctx.lineWidth = 1;
-      const gridSize = 60;
+      const gridSize = 65;
       for (let x = 0; x < width; x += gridSize) {
         ctx.beginPath();
         ctx.moveTo(x, 0);
@@ -55,6 +55,16 @@ export const ParticleCanvas = () => {
         ctx.stroke();
       }
 
+      // Cursor Radial Glow Spotlight
+      if (mouse.x > 0 && mouse.y > 0) {
+        const spotlight = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 350);
+        spotlight.addColorStop(0, 'rgba(56, 189, 248, 0.09)');
+        spotlight.addColorStop(0.5, 'rgba(129, 140, 248, 0.04)');
+        spotlight.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = spotlight;
+        ctx.fillRect(0, 0, width, height);
+      }
+
       // Update and draw particles
       particles.forEach((p, i) => {
         p.x += p.vx;
@@ -63,13 +73,13 @@ export const ParticleCanvas = () => {
         if (p.x < 0 || p.x > width) p.vx *= -1;
         if (p.y < 0 || p.y > height) p.vy *= -1;
 
-        // Distance from mouse
+        // Interactive mouse push/pull effect
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 150) {
-          p.x -= (dx / dist) * 0.6;
-          p.y -= (dy / dist) * 0.6;
+        if (dist < 160) {
+          p.x -= (dx / dist) * 0.7;
+          p.y -= (dy / dist) * 0.7;
         }
 
         ctx.beginPath();
@@ -78,18 +88,18 @@ export const ParticleCanvas = () => {
         ctx.globalAlpha = p.alpha;
         ctx.fill();
 
-        // Connect nearby particles
+        // Particle connections
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const pdx = p.x - p2.x;
           const pdy = p.y - p2.y;
           const pdist = Math.sqrt(pdx * pdx + pdy * pdy);
-          if (pdist < 120) {
+          if (pdist < 130) {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
             ctx.strokeStyle = p.color;
-            ctx.globalAlpha = (1 - pdist / 120) * 0.15;
+            ctx.globalAlpha = (1 - pdist / 130) * 0.18;
             ctx.stroke();
           }
         }
@@ -109,9 +119,18 @@ export const ParticleCanvas = () => {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-70"
-    />
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      {/* Background Mesh Lighting Orbs */}
+      <div className="orb-cyan top-[-10%] left-[-10%] animate-pulse-slow" />
+      <div className="orb-purple top-[25%] right-[-10%] animate-pulse-slow" style={{ animationDelay: '2s' }} />
+      <div className="orb-emerald bottom-[-10%] left-[20%] animate-pulse-slow" style={{ animationDelay: '4s' }} />
+      <div className="orb-cyan bottom-[15%] right-[15%] opacity-60 animate-pulse-slow" style={{ animationDelay: '1s' }} />
+
+      {/* Interactive Particle Canvas */}
+      <canvas
+        ref={canvasRef}
+        className="w-full h-full opacity-80"
+      />
+    </div>
   );
 };

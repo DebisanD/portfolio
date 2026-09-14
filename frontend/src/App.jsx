@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import { PortfolioProvider } from './context/PortfolioContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { ParticleCanvas } from './components/ParticleCanvas';
+import { ThemeSwitcher } from './components/ThemeSwitcher';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
+import { ApiExplorer } from './components/ApiExplorer';
+import { Education } from './components/Education';
 import { Experience } from './components/Experience';
+import { CodeSnippets } from './components/CodeSnippets';
+import { Testimonials } from './components/Testimonials';
 import { Contact } from './components/Contact';
 import { AdminModal } from './components/AdminModal';
 import { Footer } from './components/Footer';
@@ -27,7 +33,7 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen bg-[#090d16] text-white flex flex-col items-center justify-center p-6 text-center space-y-4">
+        <div className="min-h-screen bg-[#030712] text-white flex flex-col items-center justify-center p-6 text-center space-y-4">
           <div className="text-rose-400 font-bold text-2xl">⚠️ Rendering Error Occurred</div>
           <p className="text-slate-300 font-mono text-xs max-w-lg bg-slate-950 p-4 rounded-xl border border-rose-500/30 text-rose-300">
             {this.state.error?.toString()}
@@ -50,9 +56,12 @@ export function AppContent() {
   const [adminModalOpen, setAdminModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#090d16] text-slate-100 relative selection:bg-cyan-500 selection:text-black">
+    <div className="min-h-screen bg-[#030712] bg-mesh-gradient text-slate-100 relative selection:bg-cyan-500 selection:text-black">
       {/* Dynamic Particle Canvas Background */}
       <ParticleCanvas />
+
+      {/* Floating Real-time Theme Accent Switcher */}
+      <ThemeSwitcher />
 
       {/* Navigation Header */}
       <Navbar onOpenAdmin={() => setAdminModalOpen(true)} />
@@ -62,7 +71,11 @@ export function AppContent() {
         <Hero />
         <Skills />
         <Projects />
+        <ApiExplorer />
+        <Education />
         <Experience />
+        <CodeSnippets />
+        <Testimonials />
         <Contact />
       </main>
 
@@ -81,9 +94,11 @@ export function AppContent() {
 export default function App() {
   return (
     <ErrorBoundary>
-      <PortfolioProvider>
-        <AppContent />
-      </PortfolioProvider>
+      <ThemeProvider>
+        <PortfolioProvider>
+          <AppContent />
+        </PortfolioProvider>
+      </ThemeProvider>
     </ErrorBoundary>
   );
 }

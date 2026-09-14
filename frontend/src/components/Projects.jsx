@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { usePortfolio } from '../context/PortfolioContext';
-import { ExternalLink, Github, Search, Layers, X, Sparkles, Code2, Server } from 'lucide-react';
+import { ExternalLink, Github, Search, Layers, X, Sparkles } from 'lucide-react';
 
 export const Projects = () => {
   const { projects } = usePortfolio();
@@ -8,7 +8,7 @@ export const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [activeModalProject, setActiveModalProject] = useState(null);
 
-  const categories = ['All', 'AI & Fullstack', 'Fullstack', 'DevOps & Cloud'];
+  const categories = ['All', 'AgriTech & Web', 'Fullstack Web App', 'Enterprise ERP'];
 
   const filteredProjects = projects.filter((proj) => {
     const matchesCategory = selectedCategory === 'All' || proj.category === selectedCategory;
@@ -20,7 +20,7 @@ export const Projects = () => {
   });
 
   return (
-    <section id="projects" className="py-20 relative z-10 bg-slate-950/40 border-y border-slate-900">
+    <section id="projects" className="py-24 relative z-10 section-glow-top bg-[#070b16]/70 backdrop-blur-md border-b border-slate-800/60">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header */}
@@ -33,7 +33,7 @@ export const Projects = () => {
             Featured <span className="text-gradient">Engineering Projects</span>
           </h2>
           <p className="text-slate-300 text-base">
-            Explore a curated selection of full-stack web applications, SaaS dashboards, and cloud platforms built with modern technology stacks.
+            Explore a curated selection of full-stack web applications, Odoo ERP solutions, and AgriTech platforms built with modern technology stacks.
           </p>
         </div>
 
@@ -73,9 +73,9 @@ export const Projects = () => {
 
         {/* Projects Grid */}
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
+          {filteredProjects.map((project, idx) => (
             <div
-              key={project.id}
+              key={project.id || project._id || `proj-${idx}`}
               className="glass-panel rounded-2xl border border-slate-800/80 overflow-hidden flex flex-col glass-panel-hover group"
             >
               {/* Project Image Preview */}

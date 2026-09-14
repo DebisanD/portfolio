@@ -9,8 +9,8 @@ export default {
     extend: {
       colors: {
         dark: {
-          bg: '#090d16',
-          card: 'rgba(15, 23, 42, 0.75)',
+          bg: '#05070e',
+          card: 'rgba(12, 18, 34, 0.75)',
           border: 'rgba(255, 255, 255, 0.08)',
         },
         accent: {
@@ -21,13 +21,15 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        heading: ['Outfit', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
       },
       animation: {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float': 'float 6s ease-in-out infinite',
         'glow': 'glow 3s ease-in-out infinite alternate',
+        'spin-slow': 'spin 12s linear infinite',
       },
       keyframes: {
         float: {

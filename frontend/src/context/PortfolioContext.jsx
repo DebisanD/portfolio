@@ -189,6 +189,29 @@ export const PortfolioProvider = ({ children }) => {
     return false;
   };
 
+  // Profile Mutation
+  const updateProfile = async (profileData) => {
+    try {
+      const res = await fetch('/api/profile', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(profileData)
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setProfile(data.profile || profileData);
+        showToast('Profile updated successfully!', 'success');
+        fetchAllData();
+        return true;
+      } else {
+        showToast(data.error || 'Failed to update profile', 'error');
+      }
+    } catch (err) {
+      showToast('Error updating profile', 'error');
+    }
+    return false;
+  };
+
   return (
     <PortfolioContext.Provider value={{
       profile,
@@ -204,6 +227,7 @@ export const PortfolioProvider = ({ children }) => {
       showToast,
       loginAdmin,
       logoutAdmin,
+      updateProfile,
       sendContactMessage,
       fetchMessages,
       addProject,
