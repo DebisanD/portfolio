@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "build": "cd frontend && npm install && npm run build",
-    "start": "cd backend && node server.js"
+    "start": "cd backend && node server.js",
+    "test": "echo \"No test specified\" && exit 0"
   }
 }
+

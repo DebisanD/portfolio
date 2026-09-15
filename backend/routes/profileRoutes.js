@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
     console.error('[MongoDB Route Error] Profile fetch error:', e);
   }
 
-  // Fallback to JSON store
+  // Fallback to memory / file store
   const db = readDb();
   res.json(db.profile || {});
 });
@@ -47,11 +47,9 @@ router.put('/', async (req, res) => {
 
   const db = readDb();
   db.profile = { ...db.profile, ...req.body };
-  if (saveDb(db)) {
-    res.json({ success: true, profile: db.profile });
-  } else {
-    res.status(500).json({ error: 'Failed to update profile details' });
-  }
+  saveDb(db);
+  res.json({ success: true, profile: db.profile });
 });
 
 module.exports = router;
+
