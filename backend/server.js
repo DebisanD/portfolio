@@ -142,9 +142,11 @@ function startServer(portToTry) {
   });
 }
 
-if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+// Start server on localhost unless executing inside Vercel Serverless environment
+if (!process.env.VERCEL) {
   startServer(process.env.PORT || DEFAULT_PORT);
 }
 
 module.exports = app;
+
 
