@@ -123,12 +123,14 @@ app.use('/api/*', (req, res) => {
 // Centralized Error Handler
 app.use(errorHandler);
 
-// Dynamic Port Startup Logic
+// Dynamic Port Startup Logic for local execution
 function startServer(portToTry) {
-  const server = app.listen(portToTry, () => {
-    console.log(`⚡ [Portfolio MongoDB REST API] Server active on http://localhost:${portToTry}`);
+  app.listen(portToTry, () => {
+    console.log(`⚡ [Portfolio REST API] Server active on http://localhost:${portToTry}`);
     try {
-      fs.writeFileSync(path.join(__dirname, 'data', 'server-port.json'), JSON.stringify({ port: portToTry }), 'utf8');
+      if (!process.env.VERCEL) {
+        fs.writeFileSync(path.join(__dirname, 'data', 'server-port.json'), JSON.stringify({ port: portToTry }), 'utf8');
+      }
     } catch (e) {}
   }).on('error', (err) => {
     if (err.code === 'EADDRINUSE' && portToTry < MAX_PORT) {
@@ -140,4 +142,9 @@ function startServer(portToTry) {
   });
 }
 
-startServer(process.env.PORT || DEFAULT_PORT);
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+  startServer(process.env.PORT || DEFAULT_PORT);
+}
+
+module.exports = app;
+
