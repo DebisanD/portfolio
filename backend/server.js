@@ -34,14 +34,15 @@ if (fs.existsSync(imagesPath)) {
   app.use('/images', express.static(imagesPath));
 }
 
-// Mount Modular Routes
-app.use('/api/profile', profileRoutes);
-app.use('/api/projects', projectRoutes);
-app.use('/api/skills', skillRoutes);
-app.use('/api/experiences', experienceRoutes);
-app.use('/api/contact', contactRoutes);
-app.use('/api/stats', statsRoutes);
-app.use('/api/auth', authRoutes);
+// Mount Modular Routes (supports both /api/* and direct /* path rewrites)
+app.use(['/api/profile', '/profile'], profileRoutes);
+app.use(['/api/projects', '/projects'], projectRoutes);
+app.use(['/api/skills', '/skills'], skillRoutes);
+app.use(['/api/experiences', '/experiences'], experienceRoutes);
+app.use(['/api/contact', '/contact'], contactRoutes);
+app.use(['/api/stats', '/stats'], statsRoutes);
+app.use(['/api/auth', '/auth'], authRoutes);
+
 
 // Root API Welcome Data Generator
 const getWelcomeData = () => ({
