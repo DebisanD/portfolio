@@ -21,12 +21,13 @@ export const PortfolioProvider = ({ children }) => {
 
   const fetchAllData = async () => {
     try {
-      const [resStats, resProfile, resProjects, resSkills, resExp] = await Promise.all([
+      const [resStats, resProfile, resProjects, resSkills, resExp, resMessages] = await Promise.all([
         fetch('/api/stats').catch(() => null),
         fetch('/api/profile').catch(() => null),
         fetch('/api/projects').catch(() => null),
         fetch('/api/skills').catch(() => null),
         fetch('/api/experiences').catch(() => null),
+        fetch('/api/contact').catch(() => null),
       ]);
 
       if (resStats && resStats.ok) {
@@ -41,6 +42,10 @@ export const PortfolioProvider = ({ children }) => {
       if (resProjects && resProjects.ok) setProjects(await resProjects.json());
       if (resSkills && resSkills.ok) setSkills(await resSkills.json());
       if (resExp && resExp.ok) setExperiences(await resExp.json());
+      if (resMessages && resMessages.ok) {
+        const msgData = await resMessages.json();
+        if (Array.isArray(msgData)) setMessages(msgData);
+      }
     } catch (err) {
       console.error('Error fetching data from backend:', err);
       setIsBackendConnected(false);
@@ -86,12 +91,13 @@ export const PortfolioProvider = ({ children }) => {
     showToast('Logged out from Admin CMS', 'info');
   };
 
-  // Fetch messages for admin
+  // Fetch messages
   const fetchMessages = async () => {
     try {
       const res = await fetch('/api/contact');
       if (res.ok) {
-        setMessages(await res.json());
+        const data = await res.json();
+        if (Array.isArray(data)) setMessages(data);
       }
     } catch (err) {
       console.error('Failed to fetch messages:', err);
@@ -109,6 +115,9 @@ export const PortfolioProvider = ({ children }) => {
       const data = await res.json();
       if (res.ok) {
         showToast(data.message || 'Message sent successfully!', 'success');
+        if (data.data) {
+          setMessages(prev => [data.data, ...prev]);
+        }
         fetchAllData();
         return { success: true };
       } else {

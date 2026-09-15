@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { usePortfolio } from '../context/PortfolioContext';
 import { useTheme } from '../context/ThemeContext';
-import { Shield, Menu, X, Sun, Moon } from 'lucide-react';
+import { Shield, Menu, X, Sun, Moon, MessageSquare } from 'lucide-react';
 
 export const Navbar = ({ onOpenAdmin }) => {
-  const { isBackendConnected, adminToken, logoutAdmin, profile } = usePortfolio();
+  const { isBackendConnected, adminToken, logoutAdmin, profile, messages } = usePortfolio();
   const { theme, toggleLightDark } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -79,6 +79,16 @@ export const Navbar = ({ onOpenAdmin }) => {
               <Sun className="w-4 h-4 text-amber-400 animate-spin" style={{ animationDuration: '12s' }} />
             )}
           </button>
+
+          {/* Messages Live Counter Badge */}
+          <a
+            href="#contact"
+            title="View Live Incoming Messages"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-mono text-cyan-400 hover:border-cyan-500/50 transition-all"
+          >
+            <MessageSquare className="w-3.5 h-3.5 text-cyan-400" />
+            <span>{messages?.length || 0} Msgs</span>
+          </a>
 
           {/* API Backend Status Badge */}
           <div

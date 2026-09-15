@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { usePortfolio } from '../context/PortfolioContext';
-import { Mail, Send, MapPin, CheckCircle, MessageSquare, AlertCircle, Loader2, Facebook } from 'lucide-react';
+import { Mail, Send, MapPin, CheckCircle, MessageSquare, AlertCircle, Loader2, Facebook, Clock, User, Sparkles } from 'lucide-react';
 
 export const Contact = () => {
-  const { sendContactMessage, profile } = usePortfolio();
+  const { sendContactMessage, profile, messages } = usePortfolio();
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -128,7 +128,7 @@ export const Contact = () => {
                   </div>
                   <h3 className="text-2xl font-bold text-white">Message Sent Successfully!</h3>
                   <p className="text-slate-300 text-sm max-w-md mx-auto">
-                    Thank you for reaching out. Your message has been transmitted directly to DEBISA DARICHA DABA's inbox backend.
+                    Thank you for reaching out! Your message is now displayed live in the messages feed below and delivered directly to DEBISA DARICHA DABA.
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
@@ -231,7 +231,87 @@ export const Contact = () => {
 
         </div>
 
+        {/* Live Visitor Messages Feed & Guestbook Display */}
+        <div className="mt-16 pt-12 border-t border-slate-800/80">
+          <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center">
+                <Sparkles className="w-5 h-5 animate-pulse" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                  <span>Live Messages & Guestbook Feed</span>
+                  <span className="flex h-2 w-2 relative">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                </h3>
+                <p className="text-xs text-slate-400 font-mono">Real-time messages submitted by visitors & clients</p>
+              </div>
+            </div>
+
+            <div className="px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300">
+              Total Messages Received: <span className="text-cyan-400 font-bold">{messages?.length || 0}</span>
+            </div>
+          </div>
+
+          {!messages || messages.length === 0 ? (
+            <div className="glass-panel p-10 text-center rounded-2xl border border-slate-800/80 space-y-3">
+              <MessageSquare className="w-10 h-10 text-slate-600 mx-auto" />
+              <p className="text-sm font-mono text-slate-400">No public messages posted yet. Be the first to send a message above!</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {messages.slice(0, 9).map((msg, idx) => {
+                const dateStr = msg.date || msg.createdAt ? new Date(msg.date || msg.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : 'Recently';
+                return (
+                  <div
+                    key={msg.id || msg._id || idx}
+                    className="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 space-y-4 flex flex-col justify-between group shadow-lg"
+                  >
+                    <div className="space-y-3">
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex items-center gap-2.5">
+                          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-500 to-indigo-600 text-white font-bold text-xs flex items-center justify-center shrink-0 uppercase shadow">
+                            {msg.name ? msg.name.charAt(0) : 'V'}
+                          </div>
+                          <div>
+                            <div className="font-bold text-sm text-white group-hover:text-cyan-300 transition-colors line-clamp-1">
+                              {msg.name}
+                            </div>
+                            <div className="text-[10px] font-mono text-slate-400 flex items-center gap-1">
+                              <Clock className="w-3 h-3 text-slate-500" />
+                              <span>{dateStr}</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <span className="px-2 py-0.5 rounded-full bg-slate-900 border border-slate-800 text-[10px] font-mono text-cyan-400 shrink-0">
+                          {msg.subject || 'Inquiry'}
+                        </span>
+                      </div>
+
+                      <p className="text-slate-300 text-xs leading-relaxed bg-slate-950/60 p-3.5 rounded-xl border border-slate-800/80 text-left whitespace-pre-wrap font-sans">
+                        "{msg.message}"
+                      </p>
+                    </div>
+
+                    <div className="pt-2 border-t border-slate-800/60 flex items-center justify-between text-[11px] font-mono text-slate-500">
+                      <span className="flex items-center gap-1">
+                        <User className="w-3 h-3 text-slate-500" />
+                        <span>Verified Visitor</span>
+                      </span>
+                      <span className="text-emerald-400 font-semibold">● Delivered</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
       </div>
     </section>
   );
 };
+

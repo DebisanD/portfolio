@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Message = require('../models/Message');
 const { readDb, saveDb } = require('../utils/dbHelper');
+const { sendTelegramAlert } = require('../utils/telegramNotifier');
 
 // POST contact form message
 router.post('/', async (req, res) => {
@@ -10,6 +11,11 @@ router.post('/', async (req, res) => {
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'Name, email, and message are required fields.' });
   }
+
+  // Asynchronously trigger Telegram alert (non-blocking)
+  sendTelegramAlert({ name, email, subject, message }).catch(err => {
+    console.error('Telegram notification error:', err);
+  });
 
   try {
     if (mongoose.connection.readyState === 1) {
@@ -41,6 +47,7 @@ router.post('/', async (req, res) => {
     read: false
   };
 
+  db.messages = db.messages || [];
   db.messages.unshift(newMessage);
   saveDb(db);
   console.log(`[Contact API] Received new message from ${name} (${email})`);
@@ -52,7 +59,7 @@ router.post('/', async (req, res) => {
   });
 });
 
-// GET contact messages (Admin View)
+// GET contact messages (Public & Admin View)
 router.get('/', async (req, res) => {
   try {
     if (mongoose.connection.readyState === 1) {
@@ -68,3 +75,4 @@ router.get('/', async (req, res) => {
 });
 
 module.exports = router;
+
